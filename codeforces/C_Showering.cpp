@@ -1,7 +1,3 @@
-/*
-https://codeforces.com/contest/1999/problem/C
-*/
-
 #include <bits/stdc++.h>
 using namespace std;
 

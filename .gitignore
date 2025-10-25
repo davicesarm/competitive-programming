@@ -1,3 +1,4 @@
 .vscode
-i.txt
-o.txt
+*.txt
+.cph
+a

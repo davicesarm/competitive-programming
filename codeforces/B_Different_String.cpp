@@ -1,10 +1,6 @@
-/* 
-https://codeforces.com/contest/1971/problem/B
-*/
-
 #include <bits/stdc++.h>
 using namespace std;
-
+ 
 int main() {
     int t; cin >> t;
     while (t--) {
@@ -16,17 +12,17 @@ int main() {
             x = n / 2;
             if (n % 2 == 0) x--;
         }
-
+ 
         string snew =  s.substr(x) + s.substr(0, x);      
-
+ 
         if (s != snew) {
             cout << "YES\n";
             cout << snew << "\n";
         } else {
             cout << "NO\n";
         }
-
+ 
     }
-
+ 
     return 0;
 }
