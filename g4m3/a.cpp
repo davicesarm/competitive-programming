@@ -1,3 +1,5 @@
+// O(n^2)
+
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -32,43 +34,48 @@ template < typename T = int > ostream& operator << (ostream &out, const vector <
     return out;
 }
 
+// SOLUÇÃO --------------------------- :)
 
 void solve(){
-    bool ans = true;
+    int n, t;
+    cin >> n >> t;
+    vector<vector<bool>> v(n, vector<bool>(n, false));
 
-    queue<int> q;
+    int ocupados = 0;
+    while (t--) {
+        int x, y, r;
+        cin >> x >> y >> r;
 
-    int pai; cin >> pai;
-    q.push(pai);
-    int tam = 1;
+        int min_y = max(0, y - r);
+        int max_y = min(n - 1, y + r);
+        int min_x = max(0, x - r);
+        int max_x = min(n - 1, x + r);
 
-    for (int k = 0; k < 5; k++) {
-        for (int i = 0; i < tam; i++) {
-            int a, b;
-            cin >> a >> b;
+        for (int i = min_y; i <= max_y; i++) {
+            for (int j = min_x; j <= max_x; j++) {
+                ll dy = (ll) y - i;
+                ll dx = (ll) x - j;
+                ll r2 = (ll) r * r;
 
-            if (abs(a - b) > 1 || a + b != q.front()) {
-                ans = false;
+                if (dy * dy + dx * dx > r2) {
+                    continue;
+                }
+                
+                if (!v[i][j]) {
+                    ocupados++;
+                    v[i][j] = 1;
+                }
             }
-
-            q.pop();
-            q.push(a);
-            q.push(b);
         }
-        tam *= 2;
     }
-
-    cout << (ans ? "PERFECT" : "ALMOST") << "\n";
+    cout << (n * n) - ocupados << "\n";
 
 }
 
 int main(){
     ios_base::sync_with_stdio(false), cin.tie(nullptr), cout.tie(nullptr);
-    // int t; cin >> t;
     
-    // while(t--) 
     solve();
-
 
     return 0;
 }
