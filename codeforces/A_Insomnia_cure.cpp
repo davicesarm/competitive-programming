@@ -10,20 +10,21 @@ typedef pair<int,int> pii;
 int main() {
     fastio;
     
-    int n, k;
-    cin >> n >> k;
-    vector<int> v(n);
-    for (int& x: v) cin >> x;
+    vector<int> v(4);
+    for (int& x : v) cin >> x;
+    int d; cin >> d;
 
-    int ans = 0; 
-    for (int i = 0; i < n; i++) {
-        int x; cin >> x;
-        if (v[i] != 0 && v[i] >= v[k - 1]) {
-            ans++;
+
+    int ans = 0;
+    for (int i = 1; i <= d; i++) {
+        for (int x : v) {
+            if (i % x == 0) {
+                ans++;
+                break;
+            }
         }
     }
-
     cout << ans << "\n";
-
+    
     return 0;
 }

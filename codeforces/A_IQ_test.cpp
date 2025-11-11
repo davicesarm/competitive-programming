@@ -7,23 +7,31 @@ using namespace std;
 typedef long long ll;
 typedef pair<int,int> pii;
 
+/* 
+1 2 2
+2 1 2
+2 2 1
+*/
+
 int main() {
     fastio;
     
-    int n, k;
-    cin >> n >> k;
+    int n; cin >> n;
     vector<int> v(n);
-    for (int& x: v) cin >> x;
-
-    int ans = 0; 
+    unordered_map<int, int> m;
+    
     for (int i = 0; i < n; i++) {
         int x; cin >> x;
-        if (v[i] != 0 && v[i] >= v[k - 1]) {
-            ans++;
-        }
+        v[i] = x;
+        m[x % 2]++;
     }
 
-    cout << ans << "\n";
-
+    for (int i = 0; i < n; i++) {
+        if (m[v[i] % 2] == 1) {
+            cout << i + 1 << "\n";
+            break;
+        }
+    }
+    
     return 0;
 }

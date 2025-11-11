@@ -1,0 +1,1 @@
+print(" that ".join("I hate" if x % 2 == 0 else "I love" for x in range(int(input()))) + " it")
