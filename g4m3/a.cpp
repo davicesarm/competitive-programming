@@ -37,38 +37,26 @@ template < typename T = int > ostream& operator << (ostream &out, const vector <
 // SOLUÇÃO --------------------------- :)
 
 void solve(){
-    int n, t;
-    cin >> n >> t;
-    vector<vector<bool>> v(n, vector<bool>(n, false));
+    ll a, b, c;
+    while (cin >> a >> b >> c) {
+        vector<ll> v = {a, b, c};
+        sort(all(v));
+        
+        ll h, c1, c2;
+        h = v[2];
+        c1 = v[0], c2 = v[1];
 
-    int ocupados = 0;
-    while (t--) {
-        int x, y, r;
-        cin >> x >> y >> r;
-
-        int min_y = max(0, y - r);
-        int max_y = min(n - 1, y + r);
-        int min_x = max(0, x - r);
-        int max_x = min(n - 1, x + r);
-
-        for (int i = min_y; i <= max_y; i++) {
-            for (int j = min_x; j <= max_x; j++) {
-                ll dy = (ll) y - i;
-                ll dx = (ll) x - j;
-                ll r2 = (ll) r * r;
-
-                if (dy * dy + dx * dx > r2) {
-                    continue;
-                }
-                
-                if (!v[i][j]) {
-                    ocupados++;
-                    v[i][j] = 1;
-                }
+        if (pow(h, 2) == pow(c1, 2) + pow(c2, 2)) {
+            if (gcd(h, gcd(c1, c2)) == 1) {
+                cout << "tripla pitagorica primitiva\n";
+            }  else {
+                cout << "tripla pitagorica\n";
             }
+
+        } else {
+            cout << "tripla\n";
         }
     }
-    cout << (n * n) - ocupados << "\n";
 
 }
 
